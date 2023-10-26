@@ -26,8 +26,8 @@ export const userSignup = async (
             const { name, email, password } = req.body;
             const hashedPassword = await hash(password, 10);
             const user = new User({ name, email, password:hashedPassword });
-            user.save();
-            return res.status(200).json({ message: "OK", id:user._id.toString() });
+            await user.save();
+            return res.status(201).json({ message: "OK", id:user._id.toString() });
         } catch (error) {
             return res.status(500).json({ message: "Server Error", cause: error.message });
         }
