@@ -17,8 +17,12 @@ export const validate = (validations: ValidationChain[]) => {
     };
 }
 
-export const signupValidator = [
-    body("name").notEmpty().withMessage("Name must not be empty."),
+export const loginValidator = [
     body("email").trim().notEmpty().withMessage("Email must not be empty").isEmail().withMessage("Email must be a valid email address."),
     body("password").notEmpty().withMessage("Password must not be empty").isLength({ min: 8 }).withMessage("Password must be at least 8 characters."),
+]
+
+export const signupValidator = [
+    body("name").notEmpty().withMessage("Name must not be empty."),
+    ...loginValidator,
 ]
