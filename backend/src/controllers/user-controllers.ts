@@ -29,6 +29,6 @@ export const userSignup = async (
             await user.save();
             return res.status(201).json({ message: "OK", id:user._id.toString() });
         } catch (error) {
-            return res.status(500).json({ message: "Server Error", cause: error.message });
+            return res.status(200).json({ message: "Server Error", cause: error.message });
         }
     };
