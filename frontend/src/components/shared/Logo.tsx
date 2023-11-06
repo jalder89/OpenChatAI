@@ -4,7 +4,7 @@ import { Typography } from '@mui/material'
 
 const Logo = () => {
   return (
-    <div style={{ display: "flex", margin: "auto", alignItems: "center", gap: "16px", }}>
+    <div style={{ display: "flex", marginRight: "auto", alignItems: "center", gap: "16px", }}>
         <Link to="/">
             <img src="openai.png" alt="openai" width="32px" height="32px" className='image-inverted'/>
         </Link>
