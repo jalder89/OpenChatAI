@@ -13,7 +13,7 @@ axios.defaults.withCredentials = true;
 
 const theme = createTheme({
   typography: {
-    fontFamily: "Robot Slabk, serif",
+    fontFamily: "Robot Slab, serif",
     allVariants: {
       color: "white"
     },

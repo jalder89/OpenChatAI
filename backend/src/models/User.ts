@@ -9,13 +9,6 @@ const chatSchema = new mongoose.Schema({
     role: {
         type: String,
         required: true,
-        enum: ["public", "private"],
-    },
-    name: {
-        type: String,
-        required: false,
-        min: 3,
-        max: 25,
     },
     content: {
         type: String,
