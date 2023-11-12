@@ -20,7 +20,7 @@ export const verifyToken = async (req: Request, res: Response, next: NextFunctio
         return jwt.verify(token, process.env.JWT_SECRET, (err, success) => {
             if (err) {
                 reject(err.message);
-                res.status(401).json({ message: "Unauthorized" });
+                res.status(401).json({ message: "Unauthorized Token" });
             } else {
                 resolve();
                 res.locals.jwtData = success;

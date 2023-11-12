@@ -106,7 +106,7 @@ export const verifyUser = async (
     ) => {
         try {
             // Verify User
-            const user = await User.findById({ email: res.locals.jwtData.id });
+            const user = await User.findById(res.locals.jwtData.id);
             if (!user) {
                 return res.status(401).send({ message: "User not registered or token malfunctioned" })
             };
@@ -115,6 +115,6 @@ export const verifyUser = async (
             }
             return res.status(200).json({ message: "OK", name: user.name, email: user.email });
         } catch (error) {
-            return res.status(200).json({ message: "Server Error", cause: error.message });
+            return res.status(500).json({ message: "Server Error", cause: error.message });
         }
     };
