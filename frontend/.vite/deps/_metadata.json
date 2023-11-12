@@ -1,57 +1,66 @@
 {
   "hash": "0847921a",
-  "browserHash": "4178d48e",
+  "browserHash": "124a23b0",
   "optimized": {
     "react/jsx-dev-runtime": {
       "src": "../../node_modules/react/jsx-dev-runtime.js",
       "file": "react_jsx-dev-runtime.js",
-      "fileHash": "fea5b687",
+      "fileHash": "59ce54ae",
       "needsInterop": true
     },
     "react": {
       "src": "../../node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "99596dac",
+      "fileHash": "4335a7a0",
       "needsInterop": true
     },
     "react-dom/client": {
       "src": "../../node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "13ee7c7c",
+      "fileHash": "d5b6474c",
       "needsInterop": true
     },
     "axios": {
       "src": "../../node_modules/axios/index.js",
       "file": "axios.js",
-      "fileHash": "deda54f9",
+      "fileHash": "f0fdf1d6",
       "needsInterop": false
     },
     "@mui/material": {
       "src": "../../node_modules/@mui/material/index.js",
       "file": "@mui_material.js",
-      "fileHash": "603f9520",
+      "fileHash": "48f382d0",
       "needsInterop": false
     },
     "react-router-dom": {
       "src": "../../node_modules/react-router-dom/dist/index.js",
       "file": "react-router-dom.js",
-      "fileHash": "024a564e",
+      "fileHash": "d7c2d5f7",
       "needsInterop": false
     },
     "react-hot-toast": {
       "src": "../../node_modules/react-hot-toast/dist/index.mjs",
       "file": "react-hot-toast.js",
-      "fileHash": "7ac5c9d0",
+      "fileHash": "9189643f",
       "needsInterop": false
     },
     "react-icons/io": {
       "src": "../../node_modules/react-icons/io/index.esm.js",
       "file": "react-icons_io.js",
-      "fileHash": "25d216cb",
+      "fileHash": "9b74000b",
+      "needsInterop": false
+    },
+    "@mui/material/colors": {
+      "src": "../../node_modules/@mui/material/colors/index.js",
+      "file": "@mui_material_colors.js",
+      "fileHash": "fdea32ca",
       "needsInterop": false
     }
   },
   "chunks": {
+    "chunk-HAPR3HMJ": {
+      "file": "chunk-HAPR3HMJ.js"
+    },
     "chunk-MKG3NT3Y": {
       "file": "chunk-MKG3NT3Y.js"
     },
