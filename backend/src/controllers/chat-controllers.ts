@@ -31,3 +31,23 @@ export const generateChatCompletion = async (req: Request, res: Response, next: 
         await res.status(500).json( {message: "Something went wrong"} );
     }
 }
+
+export const getAllChats = async (
+    req: Request, 
+    res: Response, 
+    next: NextFunction
+    ) => {
+        try {
+            // Verify User
+            const user = await User.findById(res.locals.jwtData.id);
+            if (!user) {
+                return res.status(401).send({ message: "User not registered or token malfunctioned" })
+            };
+            if (user._id.toString() !== res.locals.jwtData.id) {
+                res.status(401).send({ message: "Permissions Invalid" });
+            }
+            return res.status(200).json({ message: "OK", chats: user.chats});
+        } catch (error) {
+            return res.status(500).json({ message: "Server Error", cause: error.message });
+        }
+    };

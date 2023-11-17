@@ -1,10 +1,11 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Box, Avatar, Typography, Button, IconButton } from '@mui/material'
 import { useAuth } from '../context/AuthContext';
 import { red } from '@mui/material/colors';
 import ChatItem from '../components/chat/ChatItem';
 import { IoMdSend } from 'react-icons/io'
-import { sendChatRequest } from '../helpers/api-communicators';
+import { getUserChats, sendChatRequest } from '../helpers/api-communicators';
+import toast from 'react-hot-toast';
 type Message = {
   role: "user" | "assistant";
   content: string;
@@ -24,6 +25,23 @@ const Chat = () => {
     const chatData = await sendChatRequest(content);
     setChatMessages([...chatData.chats]);
   }
+  const handleDeleteChats = async () => {
+
+  }
+  useLayoutEffect(() => {
+    if (auth?.isLoggedIn && auth.user) {
+      toast.loading("Loading chat...", {id: "loadchats"});
+      getUserChats()
+        .then((data) => {
+          setChatMessages([...data.chats]);
+          toast.success("Chat loaded!", {id: "loadchats"})
+        })
+        .catch(err => {
+          console.log(err);
+          toast.error("Loading failed!", {id: "loadchats"});
+        });
+    }
+  }, [auth])
   return (
   <Box sx={{ display: "flex", flex: 1, width: "100%", height: "100%", mt: 3, gap: 3 }}>
     <Box sx={{ display: { md: "flex", sm: "none", xs: "none"}, flex: 0.2, flexDirection: "column" }}>
