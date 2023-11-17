@@ -1,4 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Box, Avatar, Typography, Button, IconButton } from '@mui/material'
 import { useAuth } from '../context/AuthContext';
 import { red } from '@mui/material/colors';
@@ -12,6 +13,7 @@ type Message = {
 }
 
 const Chat = () => {
+  const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const auth = useAuth();
   const [chatMessages, setChatMessages] = useState<Message[]>([])
@@ -48,6 +50,11 @@ const Chat = () => {
           console.log(err);
           toast.error("Loading failed!", {id: "loadchats"});
         });
+    }
+  }, [auth])
+  useEffect(() => {
+    if (!auth?.user) {
+      return navigate("/login")
     }
   }, [auth])
   return (
