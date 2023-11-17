@@ -86,10 +86,10 @@ const Chat = () => {
           <ChatItem content={ chat.content } role={ chat.role } key={ index } />
         ))}
       </Box>
-      <div style={{ width: "100%", padding: "20px", borderRadius: 8, backgroundColor: "rgb(17, 27, 39)", display: "flex", margin: "auto"}}>
+      <div style={{ width: "100%", borderRadius: 8, backgroundColor: "rgb(17, 27, 39)", display: "flex", margin: "auto"}}>
         {" "}
-        <input ref={inputRef} type="text" style={{ width: "100%", backgroundColor: "transparent", padding: "10px", border: "none", outline: "none", color: "white", fontSize: "20px"}}/>
-        <IconButton onClick={handleSubmit} sx={{ ml: "auto", color: "white" }}><IoMdSend /></IconButton>
+        <input ref={inputRef} type="text" style={{ width: "100%", backgroundColor: "transparent", padding: "30px", border: "none", outline: "none", color: "white", fontSize: "20px"}}/>
+        <IconButton onClick={handleSubmit} sx={{ ml: "auto", color: "white", mx: 1 }}><IoMdSend /></IconButton>
       </div>
     </Box>
   </Box>
