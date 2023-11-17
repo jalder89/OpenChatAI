@@ -51,3 +51,26 @@ export const getAllChats = async (
             return res.status(500).json({ message: "Server Error", cause: error.message });
         }
     };
+
+export const deleteChats = async (
+    req: Request, 
+    res: Response, 
+    next: NextFunction
+    ) => {
+        try {
+            // Verify User
+            const user = await User.findById(res.locals.jwtData.id);
+            if (!user) {
+                return res.status(401).send({ message: "User not registered or token malfunctioned" })
+            };
+            if (user._id.toString() !== res.locals.jwtData.id) {
+                res.status(401).send({ message: "Permissions Invalid" });
+            }
+            //@ts-ignore
+            user.chats = [];
+            await user.save();
+            return res.status(200).json({ message: "OK"});
+        } catch (error) {
+            return res.status(500).json({ message: "Server Error", cause: error.message });
+        }
+    };

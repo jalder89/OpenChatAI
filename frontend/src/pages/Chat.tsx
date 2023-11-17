@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { red } from '@mui/material/colors';
 import ChatItem from '../components/chat/ChatItem';
 import { IoMdSend } from 'react-icons/io'
-import { getUserChats, sendChatRequest } from '../helpers/api-communicators';
+import { deleteUserChats, getUserChats, sendChatRequest } from '../helpers/api-communicators';
 import toast from 'react-hot-toast';
 type Message = {
   role: "user" | "assistant";
@@ -26,7 +26,15 @@ const Chat = () => {
     setChatMessages([...chatData.chats]);
   }
   const handleDeleteChats = async () => {
-
+    try {
+      toast.loading("Deleting chats...", {id: "deletechat"});
+      await deleteUserChats();
+      setChatMessages([]);
+      toast.success("Chat deleted!", {id: "deletechat"});
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to delete chat!", {id: "deletechat"});
+    }
   }
   useLayoutEffect(() => {
     if (auth?.isLoggedIn && auth.user) {
@@ -56,7 +64,7 @@ const Chat = () => {
         <Typography sx={{ mx: "auto", fontFamily: "work sans", my: 4, p: 3}}>
           You may ask questions related to Knowledge, Business, Advice, Education, etc. Please avoid sharing personal information.
         </Typography>
-        <Button sx={{ width: "200px", my: "auto", color: "white", fontWeight: 700, borderRadius: 3, mx: "auto", bgcolor: red[300], ":hover": {bgcolor: red.A400} }}>
+        <Button onClick={handleDeleteChats} sx={{ width: "200px", my: "auto", color: "white", fontWeight: 700, borderRadius: 3, mx: "auto", bgcolor: red[300], ":hover": {bgcolor: red.A400} }}>
           Clear
         </Button>
       </Box>
